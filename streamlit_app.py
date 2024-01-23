@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import plotly.express as px
 from pandas.api.types import (
     is_categorical_dtype,
     is_datetime64_any_dtype,
@@ -15,7 +16,6 @@ st.write(
     Data Science Team builds add-on functions to Streamlit.
     """
 )
-
 
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -97,3 +97,19 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
 df = pd.read_csv("goldstock.csv")
 df = df.iloc[:, 1:]
 st.dataframe(filter_dataframe(df))
+
+
+filtered_df = filter_dataframe(df)
+
+# Create an interactive chart using plotly express
+chart_type = st.selectbox("Select Chart Type", ["Line Chart", "Bar Chart", "Scatter Plot"])
+
+if chart_type == "Line Chart":
+    fig = px.line(filtered_df, x=filtered_df.index, y=filtered_df.columns)
+elif chart_type == "Bar Chart":
+    fig = px.bar(filtered_df, x=filtered_df.index, y=filtered_df.columns)
+elif chart_type == "Scatter Plot":
+    fig = px.scatter(filtered_df, x=filtered_df.index, y=filtered_df.columns)
+
+# Show the chart
+st.plotly_chart(fig)
