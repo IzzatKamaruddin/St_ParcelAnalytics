@@ -94,7 +94,6 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-df = pd.read_csv(
-    "goldstock.csv"
-)
+df = pd.read_csv("goldstock.csv")
+df = df.iloc[:, 1:]
 st.dataframe(filter_dataframe(df))
