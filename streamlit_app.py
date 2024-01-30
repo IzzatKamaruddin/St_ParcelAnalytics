@@ -92,5 +92,3 @@ df = pd.read_csv("goldstock.csv")
 df = df.iloc[:, 1:]
 st.dataframe(filter_dataframe(df))
 
-
-filtered_df = filter_dataframe(df)
