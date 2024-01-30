@@ -88,6 +88,16 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def main():
+    st.title("Streamlit Visualizations Demo")
+
+    with st.sidebar:
+        st.header("Filters and Configuration")
+        chart_type = st.selectbox(
+            label = "Please select the chart types"
+        )
+
+
 df = pd.read_csv("goldstock.csv")
 df = df.iloc[:, 1:]
 st.dataframe(filter_dataframe(df))
