@@ -7,10 +7,6 @@ from pandas.api.types import (
     is_object_dtype,
 )
 
-st.title("Auto Filter Dataframes in Streamlit")
-
-
-
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
     Adds a UI on top of a dataframe to let viewers filter columns
@@ -97,8 +93,9 @@ def main():
             label = "Please select the chart types"
         )
 
+    df = pd.read_csv("goldstock.csv")
+    df = df.iloc[:, 1:]
+    st.dataframe(filter_dataframe(df))
 
-df = pd.read_csv("goldstock.csv")
-df = df.iloc[:, 1:]
-st.dataframe(filter_dataframe(df))
-
+if __name__ == "__main__":
+    main()
