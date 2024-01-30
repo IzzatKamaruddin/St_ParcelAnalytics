@@ -10,12 +10,7 @@ import streamlit_echarts as st_echarts
 
 st.title("Auto Filter Dataframes in Streamlit")
 
-st.write(
-    """This app accomodates the blog [here](https://blog.streamlit.io/auto-generate-a-dataframe-filtering-ui-in-streamlit-with-filter_dataframe/)
-    and walks you through one example of how the Streamlit
-    Data Science Team builds add-on functions to Streamlit.
-    """
-)
+
 
 def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -103,3 +98,7 @@ filtered_df = filter_dataframe(df)
 
 # Visualize data using echarts
 st_echarts.echart(filtered_df)
+
+st_echarts(
+    options=filtered_df, height="400px",
+)
