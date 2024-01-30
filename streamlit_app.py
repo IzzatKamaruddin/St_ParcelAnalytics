@@ -6,6 +6,7 @@ from pandas.api.types import (
     is_numeric_dtype,
     is_object_dtype,
 )
+import streamlit_echarts as st_echarts
 
 st.title("Auto Filter Dataframes in Streamlit")
 
@@ -99,3 +100,6 @@ st.dataframe(filter_dataframe(df))
 
 
 filtered_df = filter_dataframe(df)
+
+# Visualize data using echarts
+st_echarts.echart(filtered_df)
